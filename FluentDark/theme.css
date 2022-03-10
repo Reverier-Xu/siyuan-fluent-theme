@@ -269,3 +269,7 @@
   z-index: 5;
   box-shadow: 0 0 10px var(--b3-theme-title-bar);
 }
+
+body.body--win32 .fullscreen>.protyle-breadcrumb, body.body--win32 .fullscreen>.block__icons {
+  padding-right: 144px;
+}

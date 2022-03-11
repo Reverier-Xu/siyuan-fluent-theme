@@ -6,4 +6,8 @@
 
 预览：
 
-![screenshot.png](screenshot.png)
+![light](screenshot-light.png)
+
+![dark](screenshot-dark.png)
+
+时间仓促，仍有很多部分没有完善，CSS 也写的不太规范，后续还会继续调整。

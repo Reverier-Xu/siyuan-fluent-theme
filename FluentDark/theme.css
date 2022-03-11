@@ -6,8 +6,12 @@
 }
 
 ::-webkit-scrollbar {
-  height: 4px;
-  width: 4px;
+  height: 8px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0;
 }
 
 :root {
@@ -17,19 +21,20 @@
   --b3-theme-primary-lighter: rgba(66, 133, 244, 0.38);
   --b3-theme-primary-lightest: rgba(66, 133, 244, 0.12);
   --b3-theme-secondary: #f3a92f;
-  --b3-theme-background: #242424;
-  --b3-theme-surface: #2b2b2b;
+  --b3-theme-background: #242526;
+  --b3-theme-surface: #2c2d2e;
   --b3-theme-surface-light: rgba(40, 40, 40, 0.86);
   --b3-theme-error: #d23f31;
-  --b3-theme-title-bar: #1b1b1b;
-  --b3-theme-dock: #404040;
+  --b3-theme-title-bar: #1b1c1d;
 
   /* 文字颜色 */
   --b3-theme-on-primary: #fff;
   --b3-theme-on-secondary: #fff;
   --b3-theme-on-background: #c9d1d9;
   --b3-theme-on-surface: #9aa0a6;
+  --b3-theme-on-line: #666;
   --b3-theme-on-error: #fff;
+  --b3-theme-dock-light: #3c3d3e;
 
   /* 字体 */
   --b3-font-family: "JetBrains Mono", "quote", "Helvetica Neue", "Luxi Sans",
@@ -59,7 +64,8 @@
   --b3-tab-background-hover: #2e2f31;
 
   /* 菜单 */
-  --b3-menu-background: #27282a;
+  --b3-menu-background: #323232;
+  --b3-menu-shadow: #1a1a1a;
 
   /* 提示 */
   --b3-tooltips-color: rgba(70, 72, 76, 0.86);
@@ -203,9 +209,9 @@
   content: '';
   position: absolute;
   width: 1px;
-  height: 20px;
+  height: 16px;
   right: -1px;
-  border-right: 1px solid var(--b3-theme-background-light);
+  border-right: 1px solid var(--b3-theme-on-line);
 }
 
 .layout-tab-bar .item--focus {
@@ -247,7 +253,7 @@
 }
 
 .dock {
-  background: var(--b3-theme-background-light);
+  background: var(--b3-theme-dock-light);
   width: 48px;
 }
 
@@ -267,9 +273,32 @@
   background: var(--b3-theme-background-light);
   position:relative;
   z-index: 5;
+  height: 32px;
   box-shadow: 0 0 10px var(--b3-theme-title-bar);
 }
 
 body.body--win32 .fullscreen>.protyle-breadcrumb, body.body--win32 .fullscreen>.block__icons {
-  padding-right: 144px;
+  padding-right: 160px;
+}
+
+.b3-menu {
+  border-radius: 0;
+  padding: 4px 0;
+  box-shadow: 0 0 6px var(--b3-menu-shadow);
+  border: none;
+}
+
+.b3-menu__item--show .b3-menu__submenu {
+  border-radius: 0;
+  padding: 4px 0;
+  box-shadow: 0 0 6px var(--b3-menu-shadow);
+  border: none;
+}
+
+.protyle-toolbar {
+  border-radius: 0;
+  box-shadow: 0 0 6px var(--b3-menu-shadow);
+  background: var(--b3-menu-background);
+  border: none;
+  padding: 0 6px;
 }

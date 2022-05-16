@@ -1,10 +1,3 @@
-* {
-  font-family: "JetBrains Mono", "quote", "Helvetica Neue", "Luxi Sans",
-    "DejaVu Sans", "Hiragino Sans GB", "Microsoft Yahei", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol",
-    "Android Emoji", "EmojiSymbols";
-}
-
 ::-webkit-scrollbar {
   height: 8px;
   width: 8px;
@@ -39,16 +32,16 @@
   --b3-theme-shadow: rgb(151, 151, 151);
 
   /* 字体 */
-  --b3-font-family: "quote", "Helvetica Neue", "Luxi Sans", "DejaVu Sans",
+  --b3-font-family: "Sarasa Mono SC Nerd", "quote", "Helvetica Neue", "Luxi Sans", "DejaVu Sans",
     "Hiragino Sans GB", "Microsoft Yahei", sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
     "EmojiSymbols";
-  --b3-font-family-code: "JetBrainsMono-Regular", mononoki, Consolas,
+  --b3-font-family-code: "Sarasa Mono SC Nerd", mononoki, Consolas,
     "Liberation Mono", Menlo, Courier, monospace, "Apple Color Emoji",
     "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
     "EmojiSymbols";
   --b3-font-family-graph: mononoki;
-  --b3-font-family-emoji: "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI",
+  --b3-font-family-emoji: "Sarasa Mono SC Nerd", "Segoe UI Symbol", "Segoe UI",
     "Apple Color Emoji", "Twemoji Mozilla", "Noto Color Emoji", "Android Emoji";
   --b3-font-family-math: KaTeX_Math;
 
@@ -215,7 +208,7 @@
 
 .layout-tab-bar .item--focus {
   background: var(--b3-theme-background-light);
-  box-shadow: 0 0 6px var(--b3-theme-shadow);
+  box-shadow: 0 0 3px var(--b3-theme-shadow);
   z-index: 5;
 }
 
@@ -290,8 +283,10 @@ body.body--win32 .fullscreen > .block__icons {
 .b3-menu__item--show .b3-menu__submenu {
   border-radius: 0;
   padding: 4px 0;
-  box-shadow: 0 0 10px var(--b3-menu-shadow);
   border: none;
+  box-shadow: var(--b3-menu-shadow);
+  z-index: 99;
+  mix-blend-mode: normal;
 }
 
 .protyle-toolbar {
@@ -300,4 +295,19 @@ body.body--win32 .fullscreen > .block__icons {
   background: var(--b3-menu-background);
   border: none;
   padding: 0 6px;
+}
+
+[contenteditable] {
+  caret-color: var(--b3-theme-primary);
+}
+
+.dock--vertical .dock__item {
+  margin: 0 0;
+}
+.dock#dockLeft {
+  border: none;
+}
+
+.layout-tab-bar .item:not(:last-child) {
+  box-shadow: none;
 }

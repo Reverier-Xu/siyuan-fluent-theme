@@ -1,5 +1,5 @@
 * {
-  font-family: "JetBrains Mono", "quote", "Helvetica Neue", "Luxi Sans",
+  font-family: "Sarasa Mono SC Nerd", "quote", "Helvetica Neue", "Luxi Sans",
     "DejaVu Sans", "Hiragino Sans GB", "Microsoft Yahei", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol",
     "Android Emoji", "EmojiSymbols";
@@ -22,31 +22,32 @@
   --b3-theme-primary-lightest: rgba(66, 133, 244, 0.12);
   --b3-theme-secondary: #f3a92f;
   --b3-theme-background: #242526;
+  --b3-theme-background-light: #353637;
   --b3-theme-surface: #2c2d2e;
   --b3-theme-surface-light: rgba(40, 40, 40, 0.86);
   --b3-theme-error: #d23f31;
   --b3-theme-title-bar: #1b1c1d;
+  --b3-theme-dock-light: #3c3d3e;
 
   /* 文字颜色 */
   --b3-theme-on-primary: #fff;
   --b3-theme-on-secondary: #fff;
   --b3-theme-on-background: #c9d1d9;
   --b3-theme-on-surface: #9aa0a6;
-  --b3-theme-on-line: #666;
+  --b3-theme-line: #666;
   --b3-theme-on-error: #fff;
-  --b3-theme-dock-light: #3c3d3e;
 
   /* 字体 */
-  --b3-font-family: "JetBrains Mono", "quote", "Helvetica Neue", "Luxi Sans",
+  --b3-font-family: "Sarasa Mono SC Nerd", "quote", "Helvetica Neue", "Luxi Sans",
     "DejaVu Sans", "Hiragino Sans GB", "Microsoft Yahei", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol",
     "Android Emoji", "EmojiSymbols";
-  --b3-font-family-code: "JetBrainsMono-Regular", mononoki, Consolas,
+  --b3-font-family-code: "Sarasa Mono SC Nerd", mononoki, Consolas,
     "Liberation Mono", Menlo, Courier, monospace, "Apple Color Emoji",
     "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
     "EmojiSymbols";
-  --b3-font-family-graph: "JetBrains Mono", mononoki;
-  --b3-font-family-emoji: "JetBrains Mono", "Segoe UI Emoji", "Segoe UI Symbol",
+  --b3-font-family-graph: mononoki;
+  --b3-font-family-emoji: "Sarasa Mono SC Nerd", "Segoe UI Emoji", "Segoe UI Symbol",
     "Segoe UI", "Apple Color Emoji", "Twemoji Mozilla", "Noto Color Emoji",
     "Android Emoji";
 
@@ -65,7 +66,6 @@
 
   /* 菜单 */
   --b3-menu-background: #323232;
-  --b3-menu-shadow: #1a1a1a;
 
   /* 提示 */
   --b3-tooltips-color: rgba(70, 72, 76, 0.86);
@@ -113,10 +113,9 @@
   --b3-width-transition: width 0.15s cubic-bezier(0, 0, 0.2, 1) 0ms;
 
   /* 阴影 */
-  --b3-point-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
-    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-  --b3-dialog-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2),
-    0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+  --b3-point-shadow: 0 0 6px #1b1c1d;
+  --b3-dialog-shadow: 0 0 6px #1b1c1d;
+  --b3-menu-shadow: 0 0 6px #1b1c1d;
 
   /* diff */
   --b3-diff-add: #133a1c;
@@ -163,7 +162,7 @@
   --b3-protyle-inline-mark-background: #32593c;
   --b3-protyle-inline-mark-color: #e8eaed;
   --b3-protyle-inline-tag-color: #9aa0a6;
-  --b3-protyle-inline-blockref-color: #9876aa;
+  --b3-protyle-inline-blockref-color: white;
 
   /* PDF */
   --b3-pdf-sidebar-width: 200px;
@@ -206,18 +205,21 @@
 }
 
 .layout-tab-bar .item::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 1px;
   height: 16px;
   right: -1px;
-  border-right: 1px solid var(--b3-theme-on-line);
+  border-right: 1px solid var(--b3-theme-line);
 }
 
 .layout-tab-bar .item--focus {
   background: var(--b3-theme-background-light);
-  box-shadow: 0 0 10px var(--b3-theme-title-bar);
   z-index: 5;
+}
+
+.layout__wnd--active .layout-tab-bar .item--focus {
+  box-shadow: 0 0 10px var(--b3-theme-title-bar);
 }
 
 .layout-tab-bar .item--focus::after {
@@ -237,7 +239,6 @@
   height: 32px;
   line-height: 32px;
   background: var(--b3-theme-title-bar);
-  box-shadow: 0 0 5px var(--b3-theme-title-bar);
 }
 
 .toolbar #drag {
@@ -271,34 +272,105 @@
 
 .protyle-breadcrumb {
   background: var(--b3-theme-background-light);
-  position:relative;
+  position: relative;
   z-index: 5;
   height: 32px;
   box-shadow: 0 0 10px var(--b3-theme-title-bar);
 }
 
-body.body--win32 .fullscreen>.protyle-breadcrumb, body.body--win32 .fullscreen>.block__icons {
+body.body--win32 .fullscreen > .protyle-breadcrumb,
+body.body--win32 .fullscreen > .block__icons {
   padding-right: 160px;
 }
 
 .b3-menu {
   border-radius: 0;
   padding: 4px 0;
-  box-shadow: 0 0 6px var(--b3-menu-shadow);
+  box-shadow: var(--b3-menu-shadow);
   border: none;
 }
 
 .b3-menu__item--show .b3-menu__submenu {
   border-radius: 0;
   padding: 4px 0;
-  box-shadow: 0 0 6px var(--b3-menu-shadow);
   border: none;
+  box-shadow: var(--b3-menu-shadow);
+  z-index: 99;
+  mix-blend-mode: normal;
 }
 
 .protyle-toolbar {
   border-radius: 0;
-  box-shadow: 0 0 6px var(--b3-menu-shadow);
+  box-shadow: var(--b3-menu-shadow);
   background: var(--b3-menu-background);
   border: none;
   padding: 0 6px;
+}
+
+.b3-dialog__container {
+  border-radius: 0;
+}
+
+.b3-dialog__close {
+  position: absolute;
+  cursor: pointer;
+  top: 16px;
+  right: 24px;
+  height: 16px;
+  width: 16px;
+  z-index: 205;
+}
+
+[contenteditable] {
+  caret-color: var(--b3-theme-primary);
+}
+
+.block__popover {
+  border-radius: 0;
+}
+
+.block__popover--move>.block__icons {
+  border-radius: 0;
+}
+
+.block__content {
+  border-radius: 0;
+}
+
+.protyle-wysiwyg [data-node-id] span[data-type="block-ref"], .protyle-wysiwyg [data-node-id] span[data-type="file-annotation-ref"] {
+  border-bottom: 1px solid var(--b3-theme-primary);
+}
+
+.fn__block {
+  border-radius: 0;
+}
+
+::selection {
+    background: var(--b3-theme-primary-lighter);
+}
+
+::-moz-selection {
+    background: var(--b3-theme-selection-lighter);
+}
+
+::-webkit-selection {
+    background: var(--b3-theme-selection-lighter);
+}
+
+.layout__resize--lr::after {
+  top: 0;
+  left: -1px;
+  height: 100%;
+  background-color: transparent;
+}
+
+.dock--vertical .dock__item {
+  margin: 0 0;
+}
+.dock#dockLeft {
+  border: none;
+}
+
+.layout-tab-bar .item:not(:last-child) {
+  box-shadow: none;
 }
